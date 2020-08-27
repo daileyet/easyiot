@@ -37,9 +37,7 @@ public interface SystemUserRoleMapper {
     default SystemUserRole selectOneByExampleSafely(SystemUserRoleExample example) {
         List<SystemUserRole> list=this.selectByExample(example);
         if(list.isEmpty()) return null;
-        if(list.size()>1) {LoggerFactory.getLogger(SystemUserRoleMapper.class).info("select one retured multiple rows");}
+        if(list.size()>1) {LoggerFactory.getLogger(SystemUserRoleMapper.class).info("select one retured {} rows",list.size());}
         return list.get(0);
     }
-
-    int insertInBatch(List<SystemUserRole> list);
 }

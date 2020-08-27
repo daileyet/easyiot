@@ -6,17 +6,17 @@
 
 	<groupId>com.openthinks.easyiot</groupId>
 	<artifactId>iot-common</artifactId>
-	<version>1.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>iot-common</name>
-	<description>easyiot common</description>
+	<description>Easyiot project for Server common project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.5.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath /> 
 	</parent>
 
 	<properties>
@@ -25,16 +25,19 @@
 		<java.version>1.8</java.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-		<jweb.maven.plugin.version>1.0.11</jweb.maven.plugin.version>
+		<jweb.maven.plugin.version>1.0.13</jweb.maven.plugin.version>
+		<jweb.common.version>1.1.10</jweb.common.version>
 		<mybatis.generate.skip>true</mybatis.generate.skip>
 		<mysql.connector.version>5.1.6</mysql.connector.version>
 		<sharding-sphere.version>4.0.0-RC1</sharding-sphere.version>
 		<druid.version>1.1.10</druid.version>
-		<mybatis-generator-core.version>1.3.5</mybatis-generator-core.version>
+		<openlibs.utilities.version>1.2.2.4</openlibs.utilities.version>
+		<mybatis-generator-core.version>1.3.7</mybatis-generator-core.version>
 		<mybatis.core.model.package>${mybatis.core.package}.model</mybatis.core.model.package>
 		<mybatis.core.mapper.package>${mybatis.core.package}.mapper</mybatis.core.mapper.package>
 		<mybatis.core.model.dir>${mybatis.core.dir}/model</mybatis.core.model.dir>
 		<mybatis.core.mapper.dir>${mybatis.core.dir}/mapper</mybatis.core.mapper.dir>
+		<activatedProperties>dev</activatedProperties>
 	</properties>
 
 	<profiles>
@@ -44,19 +47,24 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
+				<!-- only used for mybatis generator -->
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-				<jdbc.url>jdbc:mysql://localhost:3340/iot_db?characterEncoding=utf8</jdbc.url>
-				<jdbc.username>root</jdbc.username>
-				<jdbc.password>123456</jdbc.password>
+				<jdbc.url>jdbc:mysql://172.17.0.6:3306/test_spring_boot?characterEncoding=utf8</jdbc.url>
+				<jdbc.username>tester</jdbc.username>
+				<jdbc.password>test123</jdbc.password>
 			</properties>
-		</profile>
+		</profile>		
+		<profile>
+			<id>prod</id>
+			<properties>
+				<activatedProperties>prod</activatedProperties>
+			</properties>
+		</profile>	
 	</profiles>
 
 	<dependencies>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-logging</artifactId>
@@ -85,7 +93,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<!-- <version>${mysql.connector.version}</version> -->
+			<version>${mysql.connector.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,12 +108,12 @@
 		<dependency>
 			<groupId>com.github.alexmao86</groupId>
 			<artifactId>jweb-common</artifactId>
-			<version>1.1.4-Final</version>
+			<version>${jweb.common.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.openthinks.libs</groupId>
 			<artifactId>openlibs.utilities</artifactId>
-			<version>1.2.2</version>
+			<version>${openlibs.utilities.version}</version>
 		</dependency>
 
 		<dependency>
@@ -117,6 +125,17 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>${druid.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -253,6 +272,14 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
 			</plugin>
 		</plugins>
 		<!--配置Maven 对配置文件进行 过滤 -->

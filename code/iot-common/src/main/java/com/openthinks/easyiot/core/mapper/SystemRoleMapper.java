@@ -37,9 +37,7 @@ public interface SystemRoleMapper {
     default SystemRole selectOneByExampleSafely(SystemRoleExample example) {
         List<SystemRole> list=this.selectByExample(example);
         if(list.isEmpty()) return null;
-        if(list.size()>1) {LoggerFactory.getLogger(SystemRoleMapper.class).info("select one retured multiple rows");}
+        if(list.size()>1) {LoggerFactory.getLogger(SystemRoleMapper.class).info("select one retured {} rows",list.size());}
         return list.get(0);
     }
-
-    int insertInBatch(List<SystemRole> list);
 }
