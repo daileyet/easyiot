@@ -17,7 +17,7 @@ public enum AuthRole implements Valueable<Integer> {
       }
     },
     /**
-     * 可以查看，修改日志配置
+     * 可以查看,贡献
      */
     ROLE_CONTRIBUTOR {
       @Override
@@ -26,7 +26,7 @@ public enum AuthRole implements Valueable<Integer> {
       }
     },
     /**
-     * 可以查看，下载上传的日志
+     * 可以查看
      */
     ROLE_VIEWER {
       @Override

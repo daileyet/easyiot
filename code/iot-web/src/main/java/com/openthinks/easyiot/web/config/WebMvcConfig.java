@@ -2,6 +2,7 @@ package com.openthinks.easyiot.web.config;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -36,7 +37,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(new CommonAttrInterceptor()).excludePathPatterns("/api/**", "/css/**",
-        "/img/**", "/lib/**", "/js/**", "/favicon.ico");
+        "/img/**", "/lib/**", "/js/**", "/favicon.ico", "/vendor/**", "/fonts/**");
   }
 
   @Override
