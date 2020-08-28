@@ -7,7 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@MapperScan("com.openthinks.easyiot.core.mapper")
+import com.openthinks.easyiot.core.Static;
+
+@MapperScan(Static.MYBATIS_CORE_MAPPER_PACKAGE)
 @SpringBootApplication
 @EnableScheduling
 public class Application extends SpringBootServletInitializer {

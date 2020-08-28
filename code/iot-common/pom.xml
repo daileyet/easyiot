@@ -16,14 +16,14 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.5.RELEASE</version>
-		<relativePath /> 
+		<relativePath />
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
 		<properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
 		<jweb.maven.plugin.version>1.0.13</jweb.maven.plugin.version>
 		<jweb.common.version>1.1.10</jweb.common.version>
@@ -53,13 +53,13 @@
 				<jdbc.username>tester</jdbc.username>
 				<jdbc.password>test123</jdbc.password>
 			</properties>
-		</profile>		
+		</profile>
 		<profile>
 			<id>prod</id>
 			<properties>
 				<activatedProperties>prod</activatedProperties>
 			</properties>
-		</profile>	
+		</profile>
 	</profiles>
 
 	<dependencies>
@@ -220,7 +220,7 @@
 						</goals>
 						<configuration>
 							<skip>${mybatis.generate.skip}</skip>
-							<tasks>
+							<target>
 								<property name="maven.plugin.classpath"
 									refid="maven.plugin.classpath" />
 								<property name="project.basedir"
@@ -234,7 +234,7 @@
 								<property name="project.mapperdir"
 									value="${project.basedir}/src/main/java/${mybatis.core.mapper.dir}" />
 								<ant antfile="${basedir}/build.xml" target="generate" />
-							</tasks>
+							</target>
 						</configuration>
 					</execution>
 				</executions>
@@ -261,7 +261,7 @@
 				<executions>
 					<execution>
 						<id>default-cli</id>
-						<phase>initialize</phase>
+						<phase>validate</phase>
 						<goals>
 							<goal>read-project-properties</goal>
 						</goals>
@@ -269,6 +269,34 @@
 							<files>
 								<file>${basedir}/src/main/etc/prj.properties</file>
 							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven-antrun-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>preparePackage</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>Go to check if need prepare create package folder</echo>
+								<echo>MyBatis core package:${mybatis.core.package}</echo>							
+								<echo>MyBatis core model patch:${mybatis.core.model.dir}</echo>
+								<echo>MyBatis core mapper patch:${mybatis.core.mapper.dir}</echo>
+								<mkdir dir="${project.basedir}/src/main/java/${mybatis.core.model.dir}"/>
+								<mkdir dir="${project.basedir}/src/main/java/${mybatis.core.mapper.dir}"/>
+								<mkdir dir="${project.basedir}/src/main/resources/mybatis"/>
+								<ant antfile="${basedir}/build.xml">
+									<target name="genPrjStaticCode" />
+								</ant>
+							</target>
 						</configuration>
 					</execution>
 				</executions>

@@ -8,10 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.openthinks.easyiot.core.AppConfig;
+import com.openthinks.easyiot.core.Static;
 import com.openthinks.easyiot.core.util.SpringContextUtil;
 import com.openthinks.easyiot.links.servers.ServerStarter;
 
-@MapperScan("com.openthinks.easyiot.core.mapper")
+@MapperScan(Static.MYBATIS_CORE_MAPPER_PACKAGE)
 @SpringBootApplication
 @EnableScheduling
 public class Application {
