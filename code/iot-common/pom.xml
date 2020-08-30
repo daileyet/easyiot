@@ -28,7 +28,7 @@
 		<jweb.maven.plugin.version>1.0.13</jweb.maven.plugin.version>
 		<jweb.common.version>1.1.10</jweb.common.version>
 		<mybatis.generate.skip>true</mybatis.generate.skip>
-		<mysql.connector.version>5.1.6</mysql.connector.version>
+		<mysql.connector.version>8.0.16</mysql.connector.version>
 		<sharding-sphere.version>4.0.0-RC1</sharding-sphere.version>
 		<druid.version>1.1.10</druid.version>
 		<openlibs.utilities.version>1.2.2.4</openlibs.utilities.version>
