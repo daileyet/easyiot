@@ -43,13 +43,17 @@ public class AppConfig {
 	//////////////////////////////////////////
 	// LINKS
 	@Value("${links.scheduler.thread.count:10}")
-	private Integer connSchedulerThreadCount;
+	private Integer linksSchedulerThreadCount;
 	@Value("${links.server.idle.timeout:2}")
 	private Integer serverIdleTimeInMinute;
 	@Value("${links.tcpserver.enabled:false}")
 	private Boolean tcpServerEnabled;
 	@Value("${links.tcpserver.port:10240}")
 	private Integer tcpServerPort;
+	@Value("${links.queue.swap.threshold:50}")
+	private Integer linksQueueSwapThreshold;
+	@Value("${links.queue.read.max.interval:10}") // minute
+	private Integer linksQueueMaxReadInterval;
 	/////////////////////////////////////////
 	@Value("${spring.jackson.date-format}")
 	private String dateFormatPattern;
@@ -98,12 +102,12 @@ public class AppConfig {
 		return adminContacts;
 	}
 
-	public Integer getConnSchedulerThreadCount() {
-		return connSchedulerThreadCount;
+	public Integer getLinksSchedulerThreadCount() {
+		return linksSchedulerThreadCount;
 	}
 
-	public void setConnSchedulerThreadCount(Integer connSchedulerThreadCount) {
-		this.connSchedulerThreadCount = connSchedulerThreadCount;
+	public void setLinksSchedulerThreadCount(Integer connSchedulerThreadCount) {
+		this.linksSchedulerThreadCount = connSchedulerThreadCount;
 	}
 
 	public Integer getServerIdleTimeInMinute() {
@@ -129,6 +133,8 @@ public class AppConfig {
 	public void setTcpServerPort(Integer tcpServerPort) {
 		this.tcpServerPort = tcpServerPort;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -137,5 +143,13 @@ public class AppConfig {
 				+ ", emailSMTPPort=" + emailSMTPPort + ", emailSMTPSSL=" + emailSMTPSSL + ", emailSMTPAccount="
 				+ emailSMTPAccount + ", emailSMTPPass=" + emailSMTPPass + ", adminContacts=" + adminContacts
 				+ ", dateFormatPattern=" + dateFormatPattern + "]";
+	}
+
+	public long getLinkQueueMaxReadInterval() {
+		return linksQueueMaxReadInterval;
+	}
+
+	public int getLinkQueueSwapThreshold() {
+		return linksQueueSwapThreshold;
 	}
 }

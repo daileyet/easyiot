@@ -28,4 +28,7 @@
 bin/
 target/
 *.log
+*.gz
 /**/generatorConfig.properties
+
+.pydevproject

@@ -74,8 +74,8 @@
 		
 		
 		<table tableName="sys_user" domainObjectName="SystemUser">
-			<property name="AdvancedWhereClausePluginEnabled" value="false" />
-			<generatedKey column="id" sqlStatement="SELECT UUID_SHORT()" identity="false"/>
+			<property name="AdvancedWhereClausePluginEnabled" value="true" />
+			<generatedKey column="id" sqlStatement="SELECT UUID_SHORT()" identity="true"/>
 		</table>
 		
 		<table tableName="sys_role" domainObjectName="SystemRole">
@@ -88,5 +88,9 @@
 			<generatedKey column="id" sqlStatement="SELECT UUID_SHORT()" identity="false"/>
 		</table>
 
+		<table tableName="b_record" domainObjectName="BizRecord">
+			<property name="AdvancedWhereClausePluginEnabled" value="false" />
+			<generatedKey column="id" sqlStatement="SELECT UUID_SHORT()" identity="false"/>
+		</table>
 	</context>
 </generatorConfiguration>

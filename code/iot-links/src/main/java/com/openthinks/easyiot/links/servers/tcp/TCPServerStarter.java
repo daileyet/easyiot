@@ -45,9 +45,11 @@ public class TCPServerStarter implements ServerStarter {
    */
   @Override
   public void start() throws Exception {
-    LOGGER.info("TCP server connector start...");
+    LOGGER.info("TCP server link start...");
+    System.out.println("TCP start...");
     synchronized (this) {
-      stop();
+      if(running)
+    	  stop();
       bossGroup = new NioEventLoopGroup();
       workGroup = new NioEventLoopGroup();
       running = true;
@@ -55,7 +57,7 @@ public class TCPServerStarter implements ServerStarter {
     try {
       Up();
     } catch (Throwable e) {
-      LOGGER.error("TCP server connector caught exception:{}.", e);
+      LOGGER.error("TCP server link caught exception:{}.", e);
       if (running) {
         reUp();
       }
@@ -108,7 +110,7 @@ public class TCPServerStarter implements ServerStarter {
   @Override
   public synchronized void stop() throws Exception {
     running = false;
-    LOGGER.info("TCP server connector stop...");
+    LOGGER.info("TCP server link stop...");
     if (bossGroup != null) {
       bossGroup.shutdownGracefully();
       bossGroup = null;
@@ -117,7 +119,7 @@ public class TCPServerStarter implements ServerStarter {
       workGroup.shutdownGracefully();
       workGroup = null;
     }
-    LOGGER.info("TCP server connector stoped.");
+    LOGGER.info("TCP server link stoped.");
   }
 
   /*

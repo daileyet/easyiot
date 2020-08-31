@@ -1,5 +1,14 @@
-CREATE SCHEMA IF NOT EXISTS `test_spring_boot` DEFAULT CHARACTER SET utf8 ;
-use `test_spring_boot`;
+CREATE SCHEMA IF NOT EXISTS `iot_db` DEFAULT CHARACTER SET utf8 ;
+use `iot_db`;
+CREATE TABLE IF NOT EXISTS `b_record`(
+`id` BIGINT(20) NOT NULL,
+`dev_id` varchar(64) NULL,
+`data` text NULL,
+`ts` datetime,
+`source` char(1) NULL,
+PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备上传数据表' 
+;
 
 CREATE TABLE IF NOT EXISTS `sys_user` (
   `id` bigint(20) NOT NULL,
@@ -8,7 +17,8 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户表'
+;
 
 
 CREATE TABLE IF NOT EXISTS `sys_role` (
@@ -18,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_name_UNIQUE` (`role_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统权限表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统权限表'
+;
 
 
 CREATE TABLE IF NOT EXISTS `sys_user_role` (
@@ -53,3 +64,4 @@ UNION
 select UUID_SHORT(),1,2
 UNION
 select UUID_SHORT(),1,3
+;

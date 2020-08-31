@@ -64,8 +64,23 @@ public class SystemUserExample {
         distinct = false;
     }
 
+    public Criteria and() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        criteria.setCriteriaLogical("and");
+        return criteria;
+    }
+
+    public void and(Criteria criteria) {
+        oredCriteria.add(criteria);
+        criteria.setCriteriaLogical("and");
+    }
+
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
+
+        /**advaned where clause predicate logic, can be and or or.*/
+        private String criteriaLogical = "or";
 
         protected GeneratedCriteria() {
             super();
@@ -369,6 +384,332 @@ public class SystemUserExample {
             addCriterion(subQueryClause);
             return (Criteria) this;
         }
+
+        public void setCriteriaLogical(String logic) {
+            this.criteriaLogical = logic;
+        }
+
+        public String getCriteriaLogical() {
+            return this.criteriaLogical;
+        }
+
+        public Criteria orIdIsNull() {
+            addCriterion("id is null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdIsNotNull() {
+            addCriterion("id is not null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdEqualTo(Long value) {
+            addCriterion("id =", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdNotEqualTo(Long value) {
+            addCriterion("id <>", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdGreaterThan(Long value) {
+            addCriterion("id >", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("id >=", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdLessThan(Long value) {
+            addCriterion("id <", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdLessThanOrEqualTo(Long value) {
+            addCriterion("id <=", value, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdIn(List<Long> values) {
+            addCriterion("id in", values, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdNotIn(List<Long> values) {
+            addCriterion("id not in", values, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdBetween(Long value1, Long value2) {
+            addCriterion("id between", value1, value2, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orIdNotBetween(Long value1, Long value2) {
+            addCriterion("id not between", value1, value2, "id");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameIsNull() {
+            addCriterion("user_name is null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameIsNotNull() {
+            addCriterion("user_name is not null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameEqualTo(String value) {
+            addCriterion("user_name =", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameNotEqualTo(String value) {
+            addCriterion("user_name <>", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameGreaterThan(String value) {
+            addCriterion("user_name >", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("user_name >=", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameLessThan(String value) {
+            addCriterion("user_name <", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameLessThanOrEqualTo(String value) {
+            addCriterion("user_name <=", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameLike(String value) {
+            addCriterion("user_name like", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameNotLike(String value) {
+            addCriterion("user_name not like", value, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameIn(List<String> values) {
+            addCriterion("user_name in", values, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameNotIn(List<String> values) {
+            addCriterion("user_name not in", values, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameBetween(String value1, String value2) {
+            addCriterion("user_name between", value1, value2, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserNameNotBetween(String value1, String value2) {
+            addCriterion("user_name not between", value1, value2, "userName");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassIsNull() {
+            addCriterion("user_pass is null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassIsNotNull() {
+            addCriterion("user_pass is not null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassEqualTo(String value) {
+            addCriterion("user_pass =", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassNotEqualTo(String value) {
+            addCriterion("user_pass <>", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassGreaterThan(String value) {
+            addCriterion("user_pass >", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassGreaterThanOrEqualTo(String value) {
+            addCriterion("user_pass >=", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassLessThan(String value) {
+            addCriterion("user_pass <", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassLessThanOrEqualTo(String value) {
+            addCriterion("user_pass <=", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassLike(String value) {
+            addCriterion("user_pass like", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassNotLike(String value) {
+            addCriterion("user_pass not like", value, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassIn(List<String> values) {
+            addCriterion("user_pass in", values, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassNotIn(List<String> values) {
+            addCriterion("user_pass not in", values, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassBetween(String value1, String value2) {
+            addCriterion("user_pass between", value1, value2, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orUserPassNotBetween(String value1, String value2) {
+            addCriterion("user_pass not between", value1, value2, "userPass");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
+
+        public Criteria orGenericSubquery(String subQueryClause) {
+            addCriterion(subQueryClause);
+            criteria.get(criteria.size()-1).setCriterionLogical("or");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
@@ -394,6 +735,9 @@ public class SystemUserExample {
         private boolean listValue;
 
         private String typeHandler;
+
+        /**advaned where clause predicate logic, can be and or or. RESERVED!*/
+        private String criterionLogical = "and";
 
         public String getCondition() {
             return condition;
@@ -461,6 +805,14 @@ public class SystemUserExample {
 
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
+        }
+
+        public void setCriterionLogical(String logic) {
+            this.criterionLogical = logic;
+        }
+
+        public String getCriterionLogical() {
+            return this.criterionLogical;
         }
     }
 }

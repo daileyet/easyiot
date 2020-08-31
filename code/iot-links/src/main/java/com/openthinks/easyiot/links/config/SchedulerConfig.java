@@ -21,7 +21,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
   @Bean
   public TaskScheduler taskScheduler() {
     ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
-    threadPoolTaskScheduler.setPoolSize(appConfig.getConnSchedulerThreadCount());
+    threadPoolTaskScheduler.setPoolSize(appConfig.getLinksSchedulerThreadCount());
     threadPoolTaskScheduler.setThreadNamePrefix("scheduled-task-pool-");
     threadPoolTaskScheduler.initialize();
     return threadPoolTaskScheduler;
